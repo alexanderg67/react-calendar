@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom'
 import './login.css'
+import configData from "./config.json";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +31,7 @@ class Login extends Component {
         password: this.state.formPassword
         })
       };
-      fetch('http://localhost:5000/api/v1/login', requestOptions  )
+      fetch(configData.SERVER_URL+'/api/v1/login', requestOptions  )
   .then(res =>  {
     //console.log('done fetch');
     if (!res.ok) {

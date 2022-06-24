@@ -5,7 +5,7 @@ import './App.css'
 import Calendar from 'react-awesome-calendar';
 import ReactDOM from 'react-dom'
 import { useNavigate } from 'react-router-dom';
-
+import configData from "./config.json";
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class App extends Component {
     
     const token = localStorage.getItem('token');
     console.log('getEvents req')
-    fetch('http://localhost:5000/api/v1/events',
+    fetch(configData.SERVER_URL+'/api/v1/events',
     {method: 'GET'  ,
     headers: {
       Authorization: `Bearer ${token}` }
@@ -62,7 +62,7 @@ class App extends Component {
 
   deleteEvent(id) {
     
-     const deleteUrl='http://localhost:5000/api/v1/events/'+id;
+     const deleteUrl=configData.SERVER_URL+'/api/v1/events/'+id;
      const token = localStorage.getItem('token');
      fetch( deleteUrl,
     {method: 'DELETE' ,
@@ -118,7 +118,7 @@ const requestOptions = {
   from: fromDate
   })
 };
-fetch('http://localhost:5000/api/v1/events/', requestOptions)
+fetch(configData.SERVER_URL+'/api/v1/events/', requestOptions)
   .then(response => this.getEvents() )
   .catch(err=> console.log('AddEvent error: ' + err))
 this.setState({ newEventName: "",

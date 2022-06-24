@@ -1,7 +1,7 @@
  
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom'
-
+import configData from "./config.json";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +32,7 @@ class Login extends Component {
 
   getUsers() {
     const token = localStorage.getItem('token');
-    fetch('http://localhost:5000/api/v1/users',
+    fetch(configData.SERVER_URL+'/api/v1/users',
     {method: 'GET'  ,
     headers: {
       Authorization: `Bearer ${token}` }
@@ -60,7 +60,7 @@ class Login extends Component {
   }
 
   deleteUser(name) {
-    const deleteUrl='http://localhost:5000/api/v1/users/'+name;
+    const deleteUrl=configData.SERVER_URL+'/api/v1/users/'+name;
     const token = localStorage.getItem('token');
     fetch( deleteUrl,
    {method: 'DELETE' ,
@@ -93,7 +93,7 @@ class Login extends Component {
         password: this.state.formPassword
         })
       };
-      fetch('http://localhost:5000/api/v1/users/', requestOptions)
+      fetch(configData.SERVER_URL+'/api/v1/users/', requestOptions)
         .then(response =>  {
           console.log(response)
           if (response.status==500) {
@@ -160,7 +160,7 @@ class Login extends Component {
           
          required />
          <input type="submit" 
-         onClick={() => this.createUser()}   value="Login" />
+         onClick={() => this.createUser()}   value="Create" />
        </div>
        
      </div>
