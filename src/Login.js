@@ -23,7 +23,13 @@ class Login extends Component {
 
   login() {
     //console.log('login with:',this.state.formLogin,this.state.formPassword)
-      
+    if(this.state.formLogin && this.state.formPassword.length<5)  {
+      this.setState({errorMessage: 'Password length should be 5 or more',
+      formLogin:"",
+     formPassword:""
+    });
+    return;
+    } 
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,7 +57,7 @@ class Login extends Component {
   })
   .catch(err =>  {
     console.log('POST Authorization error: '+err)
-    this.setState({errorMessage: err.message,
+    this.setState({errorMessage: 'Please enter correct login and password',
       formLogin:"",
      formPassword:""
     });
@@ -73,7 +79,7 @@ class Login extends Component {
         <h2 >Login page</h2>
        
         { this.state.errorMessage &&   <div class="alert alert-primary" role="alert">
-        Please enter correct login and password </div>
+         {this.state.errorMessage}</div>
   }
   
           <input type="text" name="username" placeholder="Username" 
