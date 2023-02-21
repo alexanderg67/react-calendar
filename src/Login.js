@@ -23,7 +23,7 @@ class Login extends Component {
 
   login() {
     //console.log('login with:',this.state.formLogin,this.state.formPassword)
-    if(this.state.formLogin && this.state.formPassword.length<5)  {
+    if(this.state.formLogin && this.state.formPassword.length<5)  { // inform if password short
       this.setState({errorMessage: 'Password length should be 5 or more',
       formLogin:"",
      formPassword:""
