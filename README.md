@@ -1,7 +1,7 @@
 # Description
 
 React web calendar to create  personal tasks for many users\
-Login with superadmin and set password ( account to manage calendar users and can not be deleted)
+Login with superadmin and set password ( account to manage calendar users and can not be deleted) \
 Open http://localhost:3000 to view it in the browser.
 
 ## Configuration
